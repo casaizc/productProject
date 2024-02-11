@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <title>Edit Product</title>
+    <!-- Agrega tus estilos si es necesario -->
+</head>
+<body>
+<div class="container my-5">
+    <h1 class="text-center mb-4">Edit Product</h1>
+    <form th:action="@{/api/products/update/{id}(id=${productToEdit.id})}" th:object="${productToEdit}" method="POST">
+        <input type="hidden" name="_method" th:value="'PUT'" />
+        <!-- Agrega tus campos de edición, por ejemplo: -->
+        <div class="row g-3">
+            <div class="col-md-4">
+                <input type="text" th:field="*{nombre}" placeholder="Product Name..." class="form-control">
+            </div>
+            <div class="col-md-4">
+                <input type="text" th:field="*{descripcion}" placeholder="Description..." class="form-control">
+            </div>
+            <div class="col-md-2">
+                <input type="number" th:field="*{precio}" placeholder="Price" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-warning btn-sm">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

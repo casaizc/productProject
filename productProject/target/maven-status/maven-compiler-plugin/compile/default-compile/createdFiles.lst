@@ -1,0 +1,6 @@
+com\project\productProject\service\ProductService.class
+com\project\productProject\ProductProjectApplication.class
+com\project\productProject\model\Product.class
+com\project\productProject\controller\ProductController.class
+com\project\productProject\config\SwaggerConfig.class
+com\project\productProject\repository\ProductRepository.class

@@ -1,0 +1,30 @@
+  version: '3.8'
+
+  services:
+    spring-app:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      ports:
+        - "8082:8082"
+      depends_on:
+        - mysql
+      environment:
+        SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/my_database
+        SPRING_DATASOURCE_USERNAME: carlos
+        SPRING_DATASOURCE_PASSWORD: saiz
+
+    mysql:
+      image: mysql:latest
+      environment:
+        MYSQL_ROOT_PASSWORD: db_password
+        MYSQL_DATABASE: my_database
+        MYSQL_USER: carlos
+        MYSQL_PASSWORD: saiz
+      ports:
+        - "3307:3306"
+      healthcheck:
+        test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "carlos", "-p", "saiz"]
+        interval: 10s
+        timeout: 10s
+        retries: 5
